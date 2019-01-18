@@ -29,6 +29,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>
+      java -version
 sloccount --duplicates --wide --details . &gt; sloccount.sc</command>
     </hudson.tasks.Shell>
   </builders>
