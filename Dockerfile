@@ -18,12 +18,12 @@ ENV PATH="/usr/jdk-11.0.2/bin:$PATH"
 # Uncomment when 2.161 is out and we can bump to it
 # ENV JENKINS_ENABLE_FUTURE_JAVA=true
 
+# sloccount installed here only to pull in transitive workflow dependencies and so on automatically, the plugin is then replaced below
 RUN /usr/local/bin/install-plugins.sh \
-    configuration-as-code
-#
-#    sloccount
+    configuration-as-code \
+    sloccount
 
-# Install patched sloccount & new jaxb plugin dependency until normal releases are out (cf. JENKINS-55681)
+# Patch sloccount & add new jaxb plugin dependency until normal releases are out (cf. JENKINS-55681)
 # https://github.com/jenkinsci/sloccount-plugin/pull/53
 RUN cd  /usr/share/jenkins/ref/plugins && \
     curl -sL https://repo.jenkins-ci.org/incrementals/hudson/plugins/sloccount/sloccount/1.25-rc223.f76d173e4f2d/sloccount-1.25-rc223.f76d173e4f2d.hpi > sloccount.jpi && \
