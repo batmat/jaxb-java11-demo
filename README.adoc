@@ -1,0 +1,13 @@
+= Jenkins setup demonstrating the JAXB API plugin usage on Java 11
+
+Starting with Java 9+, JAXB is not available anymore by default in the JDK.
+
+This Jenkins Docker image demonstrates that the https://github.com/jenkinsci/jaxb-plugin/ allows to fix the `ClassNotFoundException` we would normally encounter.
+
+== References
+
+* https://issues.jenkins-ci.org/browse/JENKINS-55620
+* https://github.com/jenkinsci/sloccount-plugin/pull/53
+* https://github.com/jenkinsci/jaxb-plugin
+* https://issues.jenkins-ci.org/browse/JENKINS-55681
+* https://issues.jenkins-ci.org/browse/JENKINS-51965
