@@ -4,6 +4,25 @@ Starting with Java 9+, JAXB is not available anymore by default in the JDK.
 
 This Jenkins Docker image demonstrates that the https://github.com/jenkinsci/jaxb-plugin/ allows to fix the `ClassNotFoundException` we would normally encounter.
 
+== Use this image
+
+* Build it as usual
+
+```
+docker build -t jaxb-java11-demo .
+```
+
+* Run it
+
+```
+docker run -p 8080:8080 -ti jaxb-java11-demo
+```
+
+* Open the browser on http://localhost:8080
+* Login as admin:admin
+* Start the count-loc job
+* See it succeeds, despite running on Java 11 without any java 11 specific flag (i.e. no `--add-modules`)
+
 == References
 
 * https://issues.jenkins-ci.org/browse/JENKINS-55620
