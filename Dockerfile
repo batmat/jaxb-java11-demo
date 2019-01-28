@@ -6,7 +6,7 @@ USER root
 
 RUN apt-get update -y \
     && apt-get install sloccount -y
-RUN wget https://download.java.net/java/GA/jdk11/7/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz --output-document=/tmp/jdk11.tgz
+RUN wget https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz --output-document=/tmp/jdk11.tgz
 
 RUN cd /usr \
     && tar xvzf /tmp/jdk11.tgz && \
