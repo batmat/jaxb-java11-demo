@@ -36,8 +36,7 @@ ENV JENKINS_ENABLE_FUTURE_JAVA=true
 
 # sloccount installed here only to pull in transitive workflow dependencies and so on automatically, the plugin is then replaced below
 RUN /usr/local/bin/install-plugins.sh \
-    configuration-as-code \
-    sloccount
+    configuration-as-code
 
 ENV CASC_JENKINS_CONFIG=$JENKINS_HOME/config-as-code.yaml
 ENV JENKINS_ADMIN_PASSWORD admin

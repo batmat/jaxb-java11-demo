@@ -20,6 +20,8 @@ docker run -p 8080:8080 -ti jaxb-java11-demo
 
 * Open the browser on http://localhost:8080
 * Login as admin:admin
+* Install the sloccount plugin through the plugin manager UI
+footnote:[this must be done this way because preinstalling plugins in the Docker image would **not** install implied dependency, which JAXB is.]
 * Start the count-loc job
 * See it succeeds, despite running on Java 11 without any java 11 specific flag (i.e. no `--add-modules`)
 
