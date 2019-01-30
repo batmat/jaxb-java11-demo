@@ -6,16 +6,10 @@ This Jenkins Docker image demonstrates that the https://github.com/jenkinsci/jax
 
 == Use this image
 
-* Build it as usual
-
-```
-docker build -t jaxb-java11-demo .
-```
-
 * Run it on Java 11
 
 ```
-docker run -p 8080:8080 -ti jaxb-java11-demo
+docker run -p 8080:8080 -ti batmat/jaxb-java11-demo
 ```
 
 * Open the browser on http://localhost:8080
