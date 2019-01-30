@@ -1,5 +1,19 @@
+# Incrementals is currently broken unfortunately https://issues.jenkins-ci.org/browse/INFRA-1964
+# so building as an initial step in a multi-stages build
+FROM maven:3.6.0-jdk-8 as builder
 
-FROM jenkins/jenkins:2.159
+RUN git clone http://github.com/jenkinsci/jenkins.git && \
+    cd jenkins && \
+    git fetch origin pull/3865/head:PR-3865 && \
+    git checkout PR-3865 && \
+    mvn clean package -DskipTests -pl war -am && \
+    cp war/target/jenkins.war /jenkins.war
+
+####################
+### End multi-stage
+####################
+
+FROM jenkins/jenkins:2.161
 LABEL maintainer="Baptiste Mathus <batmat@batmat.net>"
 
 USER root
@@ -13,9 +27,7 @@ RUN cd /usr \
     ls /usr/jdk-11.0.2/
 
 # Override the WAR with https://github.com/jenkinsci/jenkins/pull/3865 automatically making JAXB as detached on Java 11
-# Incrementals is currently broken unfortunately https://issues.jenkins-ci.org/browse/INFRA-1964
-RUN wget --quiet https://ci.jenkins.io/job/Core/job/jenkins/job/PR-3865/lastSuccessfulBuild/artifact/org/jenkins-ci/main/jenkins-war/2.163-rc27905.f02266439f5c/jenkins-war-2.163-rc27905.f02266439f5c.war \
-    --output-document /usr/share/jenkins/jenkins.war
+COPY --from=builder /jenkins.war /usr/share/jenkins/jenkins.war
 
 COPY jenkins.sh /usr/local/bin/jenkins.sh
 USER jenkins
