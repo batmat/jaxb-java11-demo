@@ -1,6 +1,6 @@
 ---
 jenkins:
-  systemMessage: "Welcome to Jenkins JAXBEvergreen!"
+  systemMessage: "Welcome to the JAXB demo of Jenkins on Java 11! Please install the sloccount plugin through the UI then start the job below."
   # Agent to master security
   remotingSecurity:
     enabled: true
