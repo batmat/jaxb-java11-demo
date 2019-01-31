@@ -2,6 +2,7 @@
 # so building as an initial step in a multi-stages build
 FROM maven:3.6.0-jdk-8 as builder
 
+RUN echo hello
 RUN git clone http://github.com/jenkinsci/jenkins.git && \
     cd jenkins && \
     git fetch origin pull/3865/head:PR-3865 && \
